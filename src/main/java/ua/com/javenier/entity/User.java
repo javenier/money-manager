@@ -22,10 +22,13 @@ public class User {
     private Date registrationDate;
     @OneToMany(mappedBy = "user", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<Account> accounts;
+    private boolean active;
+    private String roles;
 
     public User() {
         this.registrationDate = new Date();
         this.accounts = new HashSet<>();
+        this.active = true;
     }
 
     public Long getId() {
@@ -82,5 +85,21 @@ public class User {
 
     public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }
